@@ -30,8 +30,9 @@ This project demonstrates how to secure SSH authentication using Google Authenti
   sudo nano /etc/ssh/sshd_config
 - Ensure the following lines exist and are set correctly:
  ```
-  - ChallengeResponseAuthentication yes
-  - UsePAM yes
+  - ChallengeResponseAuthentication yes // Controls whether SSH allows challenge-response authentication methods like Google Authenticator (TOTP-based 2FA).
+  - UsePAM yes // Determines whether SSH uses PAM (Pluggable Authentication Modules) for authentication. Google Authenticator works via PAM, so if UsePAM no is set, it won't work even if 
+    ChallengeResponseAuthentication yes is enabled.
   - #KbdInteractiveAuthentication no // this line should either be set to "no" or make this line into a comment
   ```
 
